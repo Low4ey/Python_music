@@ -5,7 +5,6 @@ import os
 
 
 root=tk.Tk()
-root.geometry("400x600")
 root.withdraw()
 
 dirname = os.path.dirname(__file__)
