@@ -3,8 +3,8 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 
-root=tk.Tk()
-root.withdraw() #it hides the tkinter dialogue but works only once
+# root=tk.Tk()
+# root.withdraw() #it hides the tkinter dialogue but works only once
 
 dirname = os.path.dirname(__file__)
 chika=os.path.join(dirname , ".\songs\chika.mp3")
@@ -46,17 +46,18 @@ def play_Song(ll):
             elif choice==2:
                 if ll.list==[]:
                     print("Playlist is Empty")
+                    break
                 else:
                     ll.pop()
                     print(f"Playing song located at {ll.list[len(ll.list)-1]}")
                     playsound(ll.list[len(ll.list)-1])
                     break
             elif choice==3:
-                # root=tk.Tk()
+                root=tk.Tk()
                 # root.withdraw()
                 # print("Enter Music Path")
-                # filename = filedialog.askopenfilename()
                 ll.Add_Song(ll.get_file_path())
+                root.destroy()
             
                 # ll.Add_Song(input())
                 break
@@ -69,6 +70,5 @@ def play_Song(ll):
             else:
                 print("Invalid Input")
                 return
-        root.destroy()
 
 play_Song(Playlist)
