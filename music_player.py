@@ -4,7 +4,7 @@ from tkinter import filedialog
 import os
 
 root=tk.Tk()
-root.withdraw()
+root.withdraw() #it hides the tkinter dialogue but works only once
 
 dirname = os.path.dirname(__file__)
 chika=os.path.join(dirname , ".\songs\chika.mp3")
@@ -52,9 +52,12 @@ def play_Song(ll):
                     playsound(ll.list[len(ll.list)-1])
                     break
             elif choice==3:
+                # root=tk.Tk()
+                # root.withdraw()
                 # print("Enter Music Path")
                 # filename = filedialog.askopenfilename()
                 ll.Add_Song(ll.get_file_path())
+            
                 # ll.Add_Song(input())
                 break
             elif choice==4:
@@ -66,5 +69,6 @@ def play_Song(ll):
             else:
                 print("Invalid Input")
                 return
+        root.destroy()
 
 play_Song(Playlist)
