@@ -3,13 +3,14 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 
-# root=tk.Tk()
-# root.withdraw() #it hides the tkinter dialogue but works only once
+
+root=tk.Tk()
+root.geometry("400x600")
+root.withdraw()
 
 dirname = os.path.dirname(__file__)
-chika=os.path.join(dirname , ".\songs\chika.mp3")
-jojo=os.path.join(dirname , ".\songs\jojo.mp3")
-sec=os.path.join(dirname , ".\songs\sec.mp3")
+chika=os.path.join(dirname , "songs\chika.mp3")
+jojo=os.path.join(dirname , "songs\jojo.mp3")
 class Stack:
     def __init__(self):
         self.list=[]
@@ -21,7 +22,7 @@ class Stack:
         return self.list[len(self.list)-1]
     
     def get_file_path(self):
-        return filedialog.askopenfilename()
+        return filedialog.askopenfilename(title="Please select a song")
     
     def pop(self):
         if self.list==[]:
@@ -29,10 +30,8 @@ class Stack:
         else:
             self.list.pop()
 
-
 Playlist=Stack()
 Playlist.Add_Song(chika)
-Playlist.Add_Song(sec)
 Playlist.Add_Song(jojo)
 def play_Song(ll):
     while True:
@@ -53,13 +52,11 @@ def play_Song(ll):
                     playsound(ll.list[len(ll.list)-1])
                     break
             elif choice==3:
-                root=tk.Tk()
-                # root.withdraw()
-                # print("Enter Music Path")
+                root.deiconify()
+                root.title("Choose dialog")
                 ll.Add_Song(ll.get_file_path())
-                root.destroy()
-            
-                # ll.Add_Song(input())
+                # root.destroy()
+                root.withdraw()
                 break
             elif choice==4:
                 ll.list.pop()
