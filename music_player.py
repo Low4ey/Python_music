@@ -19,7 +19,7 @@ class Stack:
         if self.list==[]:
             print(f" stack is empty")
         else:
-            self.list.pop(0)
+            self.list.pop()
 
 
 Playlist=Stack()
@@ -36,6 +36,7 @@ def play_Song(ll):
                 break
             elif choice==2:
                 Playlist.pop()
+                print(f"Playing song located at {Playlist.list[len(Playlist.list)-1]}")
                 playsound(Playlist.list[0])
                 break
             elif choice==3:
