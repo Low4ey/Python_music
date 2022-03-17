@@ -62,8 +62,10 @@ def play_Song(ll):
             elif choice==5:
                 print(i)
             elif choice==0:
+                root.destroy()
                 return
             else:
+                root.destroy()
                 print("Invalid Input")
                 return
 
