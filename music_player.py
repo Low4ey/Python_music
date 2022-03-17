@@ -1,10 +1,15 @@
 from playsound import playsound
+import tkinter as tk
+from tkinter import filedialog
 import os
 
+root=tk.Tk()
+root.withdraw()
 
 dirname = os.path.dirname(__file__)
 chika=os.path.join(dirname , ".\songs\chika.mp3")
 jojo=os.path.join(dirname , ".\songs\jojo.mp3")
+sec=os.path.join(dirname , ".\songs\sec.mp3")
 class Stack:
     def __init__(self):
         self.list=[]
@@ -15,6 +20,9 @@ class Stack:
     def peek(self):
         return self.list[len(self.list)-1]
     
+    def get_file_path(self):
+        return filedialog.askopenfilename()
+    
     def pop(self):
         if self.list==[]:
             print(f" stack is empty")
@@ -24,24 +32,30 @@ class Stack:
 
 Playlist=Stack()
 Playlist.Add_Song(chika)
+Playlist.Add_Song(sec)
 Playlist.Add_Song(jojo)
 def play_Song(ll):
     while True:
         print(f"Press 1 to play First Song\n Press 2 to Play Next Song.\n Press 3 to Add Song.\n Press 4 to Delete Current Song. \n Press 5 to Show Playlist \n Press 0 to Exit Music Player")
         choice=int(input())
-        for i in Playlist.list:
+        for i in ll.list:
             if choice==1:
-                print(f"Playing song located at {Playlist.list[len(Playlist.list)-1]}")
-                playsound(Playlist.peek())
+                print(f"Playing song located at {ll.list[len(ll.list)-1]}")
+                playsound(ll.peek())
                 break
             elif choice==2:
-                Playlist.pop()
-                print(f"Playing song located at {Playlist.list[len(Playlist.list)-1]}")
-                playsound(Playlist.list[0])
-                break
+                if ll.list==[]:
+                    print("Playlist is Empty")
+                else:
+                    ll.pop()
+                    print(f"Playing song located at {ll.list[len(ll.list)-1]}")
+                    playsound(ll.list[len(ll.list)-1])
+                    break
             elif choice==3:
-                print("Enter Music Path")
-                ll.Add_Song(input())
+                # print("Enter Music Path")
+                # filename = filedialog.askopenfilename()
+                ll.Add_Song(ll.get_file_path())
+                # ll.Add_Song(input())
                 break
             elif choice==4:
                 ll.list.pop()
