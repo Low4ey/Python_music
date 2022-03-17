@@ -3,8 +3,8 @@ import os
 
 
 dirname = os.path.dirname(__file__)
-chika=os.path.join(dirname , "./songs/chika.mp3")
-jojo=os.path.join(dirname , "./songs/jojo.mp3")
+chika=os.path.join(dirname , ".\songs\chika.mp3")
+jojo=os.path.join(dirname , ".\songs\jojo.mp3")
 class Stack:
     def __init__(self):
         self.list=[]
@@ -31,8 +31,8 @@ def play_Song(ll):
         choice=int(input())
         for i in Playlist.list:
             if choice==1:
-                print(f"Playing song located at {i}")
-                playsound(i)
+                print(f"Playing song located at {Playlist.list[len(Playlist.list)-1]}")
+                playsound(Playlist.peek())
                 break
             elif choice==2:
                 Playlist.pop()
